@@ -303,6 +303,8 @@ svg.chart .point { fill: #6366f1; }
 .print-only { display: none; }
 .screen-only { display: initial; }
 
+.print-table thead.print-header { display: none !important; }
+
 @media print {
   /* Standard page margins */
   @page { margin: 12mm; }
