@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reporte – Investigación de Mercado (Simulado)</title>
+  <title>Reporte - Investigación de Mercado (Simulado)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,210 +11,348 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
+  <!-- Print-only cover page -->
+  <section class="print-only print-cover">
+    <img src="logo.png" alt="The Unknown Shopper" style="height:56px; width:auto; margin-bottom:12px;" />
+    <div class="cover-title">Reporte de Investigación de Mercado</div>
+    <div class="cover-sub">Villahermosa, Tabasco — Consultorio en farmacia</div>
+    <div class="cover-sub">Cliente: The Unknown Shopper</div>
+    <div class="cover-sub">Fecha: <span id="reportDate">—</span></div>
+  </section>
+  <div class="print-only page-break"></div>
+
+  <!-- Screen header (hidden in print by rules) and main content inside tbody wrapper for print -->
+  <table class="print-table">
+    <thead class="print-header">
+      <tr>
+        <td>
+          <div class="print-header-inner">
+            <img src="logo.png" alt="The Unknown Shopper" class="print-logo">
+            <div class="print-brand">The Unknown Shopper — Reporte de Investigación</div>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody class="print-body">
+      <tr>
+        <td>
+          <header>
+            <nav>
+              <div class="logo">
+                <img src="logo.png" alt="Logo">
+              </div>
+              <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="reporte.html">Reporte</a></li>
+                <li><a href="cuestionario.html">Encuesta</a></li>
+              </ul>
+            </nav>
+            <h1 class="titleh">Reporte simulado - Estudio de mercado en Villahermosa</h1>
+          </header>
+
+          <section class="proposal" id="reportRoot" data-price="78" data-attach="57">
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
+              <button id="reportToggleAll" class="cta-button" type="button">Expandir todo</button>
+              <button id="printBtn" class="cta-button" type="button">Descargar PDF</button>
+            </div>
+            <div id="reportSurveySummary" class="summary-card" style="margin:14px 0; padding:12px; border:1px solid #e5e7eb; border-radius:10px; background:#fafafa;">
+              <strong>Resumen (datos guardados en esta sesión)</strong>
+              <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:6px;">
+                <span>Muestras: <b id="rSumN">0</b></span>
+                <span>PSM sugerido: <b id="rSumPSM">—</b></span>
+                <span>Attach estimado: <b id="rSumAttach">—</b></span>
+                <span>OTC promedio: <b id="rSumOTC">—</b></span>
+              </div>
+            </div>
+            <h2>Resultados de la Investigación (Simulado)</h2>
+            <p class="subtitle">Resumen ejecutivo, métricas clave y recomendaciones para despliegue</p>
+
+            <div class="accordion">
+              <details open>
+                <summary>1) Resumen ejecutivo</summary>
+                <div class="content">
+                  <ul>
+                    <li>Demanda suficiente en colonias populares para consultorios con ticket medio competitivo.</li>
+                    <li>Precio óptimo de consulta (PSM) simulado: $70-$85 MXN; punto de indiferencia ~ $78 MXN.</li>
+                    <li>Venta de medicamentos de primera necesidad incrementa ticket +35%-45%.</li>
+                    <li>Ranking de ubicaciones prioriza Gaviotas, Tamulté, Atasta y La Manga por afluencia y baja oferta privada cercana.</li>
+                  </ul>
+                  <div class="metrics">
+                    <div class="metric">
+                      <div class="label">PSM óptimo (consulta)</div>
+                      <div class="value" id="metricPSMValue">$78 MXN</div>
+                      <div class="sub">Rango aceptable: $70-$85</div>
+                    </div>
+                    <div class="metric">
+                      <div class="label">Attach OTC</div>
+                      <div class="value" id="metricAttach">57%</div>
+                      <div class="sub">Compra de básicos post consulta</div>
+                    </div>
+                    <div class="metric">
+                      <div class="label">Ticket total estimado</div>
+                      <div class="value" id="metricTicket">$110-$130</div>
+                      <div class="sub">Consulta + OTC</div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>2) Muestra y cobertura</summary>
+                <div class="content">
+                  <ul>
+                    <li>Cuantitativa: n≈400 entrevistas válidas, cuotas por colonia (10 zonas prioritarias).</li>
+                    <li>Cualitativa: 9 IDI + 2 grupos focales; perfiles: decisores de gasto en salud y usuarios frecuentes/ocasionales.</li>
+                    <li>Recolección mixta: calle/puntos de afluencia + online geolocalizado; control de calidad ≥ 15% back-check.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>3) Hallazgos clave</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Drivers de elección</strong>: cercanía (74%), precio (61%), tiempo de espera (48%), disponibilidad de medicamentos básicos (32%).</li>
+                    <li><strong>Uso actual</strong>: público (IMSS/INSABI) 52%, privado 28%, farmacia-consultorio 20%.</li>
+                    <li><strong>Frecuencia</strong>: 2.1 consultas/promedio anual por hogar en segmentos C-D.</li>
+                    <li><strong>OTC</strong>: 57% compra algún básico tras la consulta (analgésicos, antigripales, SRO).</li>
+                  </ul>
+                  <div class="chart-box">
+                    <div class="chart-title">Drivers de elección (simulado)</div>
+                    <div class="bars">
+                      <div class="bar"><div class="fill" style="width:74%"></div><div class="txt"><span>Cercanía</span><span>74%</span></div></div>
+                      <div class="bar"><div class="fill" style="width:61%"></div><div class="txt"><span>Precio</span><span>61%</span></div></div>
+                      <div class="bar"><div class="fill" style="width:48%"></div><div class="txt"><span>Tiempo de espera</span><span>48%</span></div></div>
+                      <div class="bar"><div class="fill" style="width:32%"></div><div class="txt"><span>Disponibilidad de básicos</span><span>32%</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>4) PSM - Precio de consulta (simulado)</summary>
+                <div class="content">
+                  <ul>
+                    <li>Demasiado barato: $50 MXN</li>
+                    <li>Barato: $65 MXN</li>
+                    <li>Caro: $90 MXN</li>
+                    <li>Demasiado caro: $110 MXN</li>
+                    <li><strong>Rango aceptable</strong>: $70-$85 MXN; <strong>óptimo</strong> (punto de indiferencia): ~$78 MXN.</li>
+                  </ul>
+                  <div class="chart-box">
+                    <div class="chart-title">Curva PSM (simulada)</div>
+                    <svg class="chart" viewBox="0 0 320 180" preserveAspectRatio="none">
+                      <line class="axis" x1="30" y1="150" x2="300" y2="150" />
+                      <line class="axis" x1="30" y1="20" x2="30" y2="150" />
+                      <polyline class="line" points="30,130 80,120 130,95 180,75 230,60 280,55"/>
+                      <circle class="point" cx="180" cy="75" r="3" />
+                      <text x="170" y="68" font-size="10" fill="#64748b">~$78</text>
+                    </svg>
+                    <div class="chart-note">Indicativa para presentación. Cálculo final se basa en intersecciones PSM.</div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>5) Ranking de ubicaciones (simulado)</summary>
+                <div class="content">
+                  <ul>
+                    <li>1. Gaviotas (N/S) - Alta densidad, afluencia, baja oferta privada.</li>
+                    <li>2. Tamulté de las Barrancas - Conectividad y comercio local.</li>
+                    <li>3. Atasta de Serra - Proximidad a corredores de transporte.</li>
+                    <li>4. La Manga I-III - Concentración poblacional y flujo peatonal.</li>
+                    <li>5. Indeco - Mixto residencial-comercial; potencial de ticket alto.</li>
+                    <li>6. Casa Blanca (1a-2a) - Acceso vial; competencia moderada.</li>
+                    <li>7. Espejo I-II - Escuela/mercado cercanos; demanda recurrente.</li>
+                    <li>8. Tierra Colorada - Crecimiento habitacional.</li>
+                    <li>9. Parrilla - Corredor a periferia con flujo constante.</li>
+                    <li>10. Laguna El Negro y aledañas - Afluencia específica, vigilancia de competencia.</li>
+                  </ul>
+                  <div class="chart-box">
+                    <div class="chart-title">Score de priorización (simulado)</div>
+                    <div class="bars">
+                      <div class="bar"><div class="fill" style="width:92%"></div><div class="txt"><span>Gaviotas</span><span>92</span></div></div>
+                      <div class="bar"><div class="fill" style="width:86%"></div><div class="txt"><span>Tamulté</span><span>86</span></div></div>
+                      <div class="bar"><div class="fill" style="width:82%"></div><div class="txt"><span>Atasta</span><span>82</span></div></div>
+                      <div class="bar"><div class="fill" style="width:79%"></div><div class="txt"><span>La Manga</span><span>79</span></div></div>
+                      <div class="bar"><div class="fill" style="width:76%"></div><div class="txt"><span>Indeco</span><span>76</span></div></div>
+                    </div>
+                  </div>
+                  <div class="chart-box" style="margin-top:8px;">
+                    <div class="chart-title">KPIs por colonia (simulado)</div>
+                    <table class="kpi-table">
+                      <thead>
+                        <tr>
+                          <th>Colonia</th>
+                          <th>Score</th>
+                          <th>PSM consulta</th>
+                          <th>Attach OTC</th>
+                          <th>Ticket total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="kpiByColoniaBody">
+                        <tr>
+                          <td>Gaviotas (N/S)</td>
+                          <td>92</td>
+                          <td>$78</td>
+                          <td>58%</td>
+                          <td>$118</td>
+                        </tr>
+                        <tr>
+                          <td>Tamulté de las Barrancas</td>
+                          <td>86</td>
+                          <td>$76</td>
+                          <td>55%</td>
+                          <td>$115</td>
+                        </tr>
+                        <tr>
+                          <td>Atasta de Serra</td>
+                          <td>82</td>
+                          <td>$79</td>
+                          <td>53%</td>
+                          <td>$116</td>
+                        </tr>
+                        <tr>
+                          <td>La Manga I–III</td>
+                          <td>79</td>
+                          <td>$77</td>
+                          <td>52%</td>
+                          <td>$113</td>
+                        </tr>
+                        <tr>
+                          <td>Indeco</td>
+                          <td>76</td>
+                          <td>$81</td>
+                          <td>49%</td>
+                          <td>$112</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="chart-note">Notas: PSM por colonia es indicativo; ticket total = consulta óptima + gasto OTC esperado (attach x OTC medio). Sujetos a ajuste con datos de campo.</div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>6) Ticket medio y proyección (simulado)</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Ticket consulta</strong> (óptimo): ~$78 MXN.</li>
+                    <li><strong>Ticket OTC adicional</strong>: $35-$55 MXN por visita.</li>
+                    <li><strong>Ticket total estimado</strong>: $110-$130 MXN.</li>
+                    <li><strong>Volumen</strong> (maduración 6 meses): 18-25 consultas/día/sucursal.</li>
+                    <li><strong>Ingresos diarios</strong> (20 sucursales): ~$39k-$65k MXN.</li>
+                  </ul>
+                  <div class="chart-box">
+                    <div class="chart-title">Mix de ticket (simulado)</div>
+                    <div class="stacked" id="stackedMix" style="grid-template-columns: 65% 35%">
+                      <div class="a"></div>
+                      <div class="b"></div>
+                    </div>
+                    <div class="stacked-legend">
+                      <span id="legendConsult"><i class="legend-dot" style="background: rgba(99,102,241,0.65)"></i>Consulta ~65%</span>
+                      <span id="legendOTC"><i class="legend-dot" style="background: rgba(20,184,166,0.55)"></i>OTC ~35%</span>
+                    </div>
+                    <div class="chart-note">Proporción estimada con attach rate = 57% y ticket OTC medio.</div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>7) Segmentos/personas (simulado)</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Madres gestoras (D+/C-)</strong>: alta sensibilidad a cercanía y precio; compra SRO/analgésicos.</li>
+                    <li><strong>Trabajador informal</strong>: tiempo de espera crítico; busca resolver síntomas rápidos (antigripales).</li>
+                    <li><strong>Adulto mayor cuidador</strong>: requiere orientación; valora trato y disponibilidad de básicos.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>8) Riesgos y mitigaciones</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Competencia local</strong> → monitoreo mensual y ajuste de precios/promos.</li>
+                    <li><strong>Variabilidad de demanda</strong> → horarios elásticos y campañas por temporada.</li>
+                    <li><strong>Regulatorio</strong> → apego COFEPRIS para OTC; capacitación continua.</li>
+                    <li><strong>Calidad de servicio</strong> → estandarización de atención y control de tiempos.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>9) Recomendaciones accionables</summary>
+                <div class="content">
+                  <ul>
+                    <li>Abrir en dos oleadas: 10 sucursales prioritarias (Top 1-10), luego 10 siguientes tras 3-4 meses.</li>
+                    <li>Precio de lanzamiento: $75 MXN (dentro del PSM) + paquete básico (analgésico o SRO con descuento).</li>
+                    <li>Dashboard operativo: consultas/día, ticket OTC, tiempos de espera, NPS por sucursal.</li>
+                    <li>Abasto OTC: garantizar top 20 SKUs de alta rotación en cada sucursal.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>10) Comparaciones y benchmark</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Alternativas</strong>: público (IMSS/INSABI), privado y consultorio en farmacia. Diferenciales evaluados: costo, tiempo de espera, accesibilidad y disponibilidad OTC.</li>
+                    <li><strong>Eficiencia costo-tiempo</strong>: público = costo mínimo pero alta latencia; privado = costo alto, baja latencia; consultorio en farmacia = óptimo intermedio (costo controlado con tiempos competitivos).</li>
+                    <li><strong>Utilidad percibida</strong>: proximidad (<em>walk-in</em>) y rapidez maximizan conveniencia; la señal de calidad depende de estandarización y protocolos.</li>
+                    <li><strong>OTC como palanca</strong>: disponibilidad inmediata de básicos eleva satisfacción posconsulta y ticket promedio (attach de 50%-60%).</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details open>
+                <summary>11) Conclusiones y viabilidad</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Viabilidad comercial</strong>: favorable bajo supuestos de ubicación con afluencia peatonal, baja oferta privada adyacente y cumplimiento de SLA de atención (&lt;30 min).</li>
+                    <li><strong>Precio</strong>: rango operativo $70-$85 MXN; óptimo estimado ~$78 MXN vía PSM. Ajustar por elasticidad local y competencia.</li>
+                    <li><strong>Economía por visita</strong>: attach OTC de 50%-60% implica ticket total de ~$110-$130 MXN (consulta + OTC). Sensible a surtido y tiempos.</li>
+                    <li><strong>Despliegue</strong>: 2 oleadas (10 + 10) con revisión de KPIs (consultas/día, attach, ticket, NPS) y <em>kill/scale</em> por sitio.</li>
+                    <li><strong>Riesgos</strong>: reacción competitiva, estacionalidad, cumplimiento COFEPRIS, variabilidad de demanda. Mitigaciones: monitoreo mensual, precios dinámicos, protocolos estandarizados.</li>
+                  </ul>
+                  <p>Conclusión: el modelo de <em>consultorio en farmacia</em> a bajo costo presenta tracción suficiente en segmentos C-D, condicionado a ejecución operativa y selección de sitio. Requiere <em>go-live</em> con tablero y umbrales de decisión.</p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <footer id="contacto">
+            <div class="footer-contact">
+              <p>¿Dudas o ajustes al reporte simulado? Contáctanos.</p>
+              <a href="#" class="cta-button">Contacto</a>
+            </div>
+            <p>&copy; 2025 The Unknown Shopper. Todos los derechos reservados.</p>
+          </footer>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Print-only signature block -->
+  <div class="print-only page-break"></div>
+  <section class="print-only signature-block">
+    <h3>Firmas</h3>
+    <div class="sig-line">
+      <div class="sig">
+        <hr>
+        <div>Representante — The Unknown Shopper</div>
+        <div class="role">Nombre y firma</div>
       </div>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="cuestionario.html">Encuesta</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <h1 class="titleh">Reporte simulado – Estudio de mercado en Villahermosa (20 sucursales)</h1>
-  </header>
-
-  <section class="proposal" id="reportRoot" data-price="78" data-attach="57">
-    <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
-      <button id="reportToggleAll" class="cta-button" type="button">Expandir todo</button>
-      <button id="printBtn" class="cta-button" type="button">Descargar PDF</button>
+      <div class="sig">
+        <hr>
+        <div>Cliente</div>
+        <div class="role">Nombre y firma</div>
+      </div>
     </div>
-    <h2>Resultados de la Investigación (Simulado)</h2>
-    <p class="subtitle">Resumen ejecutivo, métricas clave y recomendaciones para despliegue</p>
-
-    <div class="accordion">
-      <details open>
-        <summary>1) Resumen ejecutivo</summary>
-        <div class="content">
-          <ul>
-            <li>Demanda suficiente en colonias populares para soportar 20 consultorios con ticket medio competitivo.</li>
-            <li>Precio óptimo de consulta (PSM) simulado: $70-$85 MXN; punto de indiferencia ~ $78 MXN.</li>
-            <li>Venta de medicamentos de primera necesidad incrementa ticket +35%-45%.</li>
-            <li>Ranking de ubicaciones prioriza Gaviotas, Tamulté, Atasta y La Manga por afluencia y baja oferta privada cercana.</li>
-          </ul>
-          <div class="metrics">
-            <div class="metric">
-              <div class="label">PSM óptimo (consulta)</div>
-              <div class="value">$78 MXN</div>
-              <div class="sub">Rango aceptable: $70-$85</div>
-            </div>
-            <div class="metric">
-              <div class="label">Attach OTC</div>
-              <div class="value">57%</div>
-              <div class="sub">Compra de básicos post consulta</div>
-            </div>
-            <div class="metric">
-              <div class="label">Ticket total estimado</div>
-              <div class="value">$110-$130</div>
-              <div class="sub">Consulta + OTC</div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>2) Muestra y cobertura</summary>
-        <div class="content">
-          <ul>
-            <li>Cuantitativa: n≈400 entrevistas válidas, cuotas por colonia (10 zonas prioritarias).</li>
-            <li>Cualitativa: 9 IDI + 2 grupos focales; perfiles: decisores de gasto en salud y usuarios frecuentes/ocasionales.</li>
-            <li>Recolección mixta: calle/puntos de afluencia + online geolocalizado; control de calidad ≥ 15% back-check.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>3) Hallazgos clave</summary>
-        <div class="content">
-          <ul>
-            <li><strong>Drivers de elección</strong>: cercanía (74%), precio (61%), tiempo de espera (48%), disponibilidad de medicamentos básicos (32%).</li>
-            <li><strong>Uso actual</strong>: público (IMSS/INSABI) 52%, privado 28%, farmacia-consultorio 20%.</li>
-            <li><strong>Frecuencia</strong>: 2.1 consultas/promedio anual por hogar en segmentos C–D.</li>
-            <li><strong>OTC</strong>: 57% compra algún básico tras la consulta (analgésicos, antigripales, SRO).</li>
-          </ul>
-          <div class="chart-box">
-            <div class="chart-title">Drivers de elección (simulado)</div>
-            <div class="bars">
-              <div class="bar"><div class="fill" style="width:74%"></div><div class="txt"><span>Cercanía</span><span>74%</span></div></div>
-              <div class="bar"><div class="fill" style="width:61%"></div><div class="txt"><span>Precio</span><span>61%</span></div></div>
-              <div class="bar"><div class="fill" style="width:48%"></div><div class="txt"><span>Tiempo de espera</span><span>48%</span></div></div>
-              <div class="bar"><div class="fill" style="width:32%"></div><div class="txt"><span>Disponibilidad de básicos</span><span>32%</span></div></div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>4) PSM – Precio de consulta (simulado)</summary>
-        <div class="content">
-          <ul>
-            <li>Demasiado barato: $50 MXN</li>
-            <li>Barato: $65 MXN</li>
-            <li>Caro: $90 MXN</li>
-            <li>Demasiado caro: $110 MXN</li>
-            <li><strong>Rango aceptable</strong>: $70-$85 MXN; <strong>óptimo</strong> (punto de indiferencia): ~$78 MXN.</li>
-          </ul>
-          <div class="chart-box">
-            <div class="chart-title">Curva PSM (simulada)</div>
-            <svg class="chart" viewBox="0 0 320 180" preserveAspectRatio="none">
-              <line class="axis" x1="30" y1="150" x2="300" y2="150" />
-              <line class="axis" x1="30" y1="20" x2="30" y2="150" />
-              <polyline class="line" points="30,130 80,120 130,95 180,75 230,60 280,55"/>
-              <circle class="point" cx="180" cy="75" r="3" />
-              <text x="170" y="68" font-size="10" fill="#64748b">~$78</text>
-            </svg>
-            <div class="chart-note">Indicativa para presentación. Cálculo final se basa en intersecciones PSM.</div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>5) Ranking de ubicaciones (simulado)</summary>
-        <div class="content">
-          <ul>
-            <li>1. Gaviotas (N/S) – Alta densidad, afluencia, baja oferta privada.</li>
-            <li>2. Tamulté de las Barrancas – Conectividad y comercio local.</li>
-            <li>3. Atasta de Serra – Proximidad a corredores de transporte.</li>
-            <li>4. La Manga I–III – Concentración poblacional y flujo peatonal.</li>
-            <li>5. Indeco – Mixto residencial-comercial; potencial de ticket alto.</li>
-            <li>6. Casa Blanca (1a–2a) – Acceso vial; competencia moderada.</li>
-            <li>7. Espejo I–II – Escuela/mercado cercanos; demanda recurrente.</li>
-            <li>8. Tierra Colorada – Crecimiento habitacional.</li>
-            <li>9. Parrilla – Corredor a periferia con flujo constante.</li>
-            <li>10. Laguna El Negro y aledañas – Afluencia específica, vigilancia de competencia.</li>
-          </ul>
-          <div class="chart-box">
-            <div class="chart-title">Score de priorización (simulado)</div>
-            <div class="bars">
-              <div class="bar"><div class="fill" style="width:92%"></div><div class="txt"><span>Gaviotas</span><span>92</span></div></div>
-              <div class="bar"><div class="fill" style="width:86%"></div><div class="txt"><span>Tamulté</span><span>86</span></div></div>
-              <div class="bar"><div class="fill" style="width:82%"></div><div class="txt"><span>Atasta</span><span>82</span></div></div>
-              <div class="bar"><div class="fill" style="width:79%"></div><div class="txt"><span>La Manga</span><span>79</span></div></div>
-              <div class="bar"><div class="fill" style="width:76%"></div><div class="txt"><span>Indeco</span><span>76</span></div></div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>6) Ticket medio y proyección (simulado)</summary>
-        <div class="content">
-          <ul>
-            <li><strong>Ticket consulta</strong> (óptimo): ~$78 MXN.</li>
-            <li><strong>Ticket OTC adicional</strong>: $35-$55 MXN por visita.</li>
-            <li><strong>Ticket total estimado</strong>: $110-$130 MXN.</li>
-            <li><strong>Volumen</strong> (maduración 6 meses): 18-25 consultas/día/sucursal.</li>
-            <li><strong>Ingresos diarios</strong> (20 sucursales): ~$39k-$65k MXN.</li>
-          </ul>
-          <div class="chart-box">
-            <div class="chart-title">Mix de ticket (simulado)</div>
-            <div class="stacked" style="grid-template-columns: 65% 35%">
-              <div class="a"></div>
-              <div class="b"></div>
-            </div>
-            <div class="stacked-legend">
-              <span><i class="legend-dot" style="background: rgba(99,102,241,0.65)"></i>Consulta ~65%</span>
-              <span><i class="legend-dot" style="background: rgba(20,184,166,0.55)"></i>OTC ~35%</span>
-            </div>
-            <div class="chart-note">Proporción estimada con attach rate = 57% y ticket OTC medio.</div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>7) Segmentos/personas (simulado)</summary>
-        <div class="content">
-          <ul>
-            <li><strong>Madres gestoras (D+/C-)</strong>: alta sensibilidad a cercanía y precio; compra SRO/analgésicos.</li>
-            <li><strong>Trabajador informal</strong>: tiempo de espera crítico; busca resolver síntomas rápidos (antigripales).</li>
-            <li><strong>Adulto mayor cuidador</strong>: requiere orientación; valora trato y disponibilidad de básicos.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>8) Riesgos y mitigaciones</summary>
-        <div class="content">
-          <ul>
-            <li><strong>Competencia local</strong> → monitoreo mensual y ajuste de precios/promos.</li>
-            <li><strong>Variabilidad de demanda</strong> → horarios elásticos y campañas por temporada.</li>
-            <li><strong>Regulatorio</strong> → apego COFEPRIS para OTC; capacitación continua.</li>
-            <li><strong>Calidad de servicio</strong> → estandarización de atención y control de tiempos.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>9) Recomendaciones accionables</summary>
-        <div class="content">
-          <ul>
-            <li>Abrir en dos oleadas: 10 sucursales prioritarias (Top 1–10), luego 10 siguientes tras 3–4 meses.</li>
-            <li>Precio de lanzamiento: $75 MXN (dentro del PSM) + paquete básico (analgésico o SRO con descuento).</li>
-            <li>Dashboard operativo: consultas/día, ticket OTC, tiempos de espera, NPS por sucursal.</li>
-            <li>Abasto OTC: garantizar top 20 SKUs de alta rotación en cada sucursal.</li>
-          </ul>
-        </div>
-      </details>
+    <!-- Footer logo only on last page -->
+    <div class="print-footer-logo">
+      <img src="logo.png" alt="The Unknown Shopper" />
     </div>
   </section>
-
-  <footer id="contacto">
-    <div class="footer-contact">
-      <p>¿Dudas o ajustes al reporte simulado? Contáctanos.</p>
-      <a href="#" class="cta-button">Contacto</a>
-    </div>
-    <p>&copy; 2025 The Unknown Shopper. Todos los derechos reservados.</p>
-  </footer>
 </body>
 </html>

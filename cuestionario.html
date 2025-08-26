@@ -25,186 +25,205 @@
     <h1 class="titleh">Cuestionario – Estudio de mercado</h1>
   </header>
 
-  <section class="proposal">
-    <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
-      <button id="questionToggleAll" class="cta-button" type="button">Expandir todo</button>
-      <a class="cta-button" href="index.html">Volver al inicio</a>
-      <button id="printBtn" class="cta-button" type="button">Descargar PDF</button>
-    </div>
-    <h2>Guía de entrevista para encuestas presenciales</h2>
-    <p class="subtitle">Incluye filtros, consentimiento, hábitos de atención, módulo PSM y compra de OTC</p>
+  <!-- Print-only header (repeats in PDF) + body wrapped in a table for print reliability -->
+  <table class="print-table">
+    <thead class="print-header">
+      <tr>
+        <td>
+          <div class="print-header-inner">
+            <img src="logo.png" alt="The Unknown Shopper" class="print-logo">
+            <div class="print-brand">The Unknown Shopper — Cuestionario</div>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody class="print-body">
+      <tr>
+        <td>
+          <section class="proposal">
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
+              <button id="questionToggleAll" class="cta-button" type="button">Expandir todo</button>
+              <a class="cta-button" href="index.html">Volver al inicio</a>
+              <button id="printBtn" class="cta-button" type="button">Descargar PDF</button>
+            </div>
+            <h2>Guía de entrevista para encuestas presenciales</h2>
+            <p class="subtitle">Incluye filtros, consentimiento, hábitos de atención, módulo PSM y compra de OTC</p>
 
-    <form id="surveyForm" class="accordion" style="margin-top:10px;" onsubmit="return false;">
-      <details open>
-        <summary>0) Consentimiento informado</summary>
-        <div class="content">
-          <p>Hola, estamos realizando una encuesta breve sobre servicios de salud y consulta en farmacia. La entrevista dura 6–8 minutos. ¿Aceptas participar? Tu información será anónima y usada solo con fines estadísticos.</p>
-          <label style="display:flex; gap:8px; align-items:center; margin-top:6px;">
-            <input type="checkbox" name="consentimiento" required> Acepto participar en la encuesta
-          </label>
-        </div>
-      </details>
+            <form id="surveyForm" class="accordion" style="margin-top:10px;" onsubmit="return false;">
+              <details open>
+                <summary>0) Consentimiento informado</summary>
+                <div class="content">
+                  <p>Hola, estamos realizando una encuesta breve sobre servicios de salud y consulta en farmacia. La entrevista dura 6–8 minutos. ¿Aceptas participar? Tu información será anónima y usada solo con fines estadísticos.</p>
+                  <label style="display:flex; gap:8px; align-items:center; margin-top:6px;">
+                    <input type="checkbox" name="consentimiento" required> Acepto participar en la encuesta
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>1) Filtro</summary>
-        <div class="content">
-          <label>1.1 Edad
-            <input type="number" name="edad" min="15" max="99" placeholder="Años" required>
-          </label>
-          <label>1.2 ¿Resides actualmente en Villahermosa?
-            <select name="reside" required>
-              <option value="">Selecciona…</option>
-              <option>Sí</option>
-              <option>No</option>
-            </select>
-          </label>
-          <label>1.3 Colonia o zona de residencia
-            <input type="text" name="colonia" placeholder="Colonia / Zona" required>
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>1) Filtro</summary>
+                <div class="content">
+                  <label>1.1 Edad
+                    <input type="number" name="edad" min="15" max="99" placeholder="Años" required>
+                  </label>
+                  <label>1.2 ¿Resides actualmente en Villahermosa?
+                    <select name="reside" required>
+                      <option value="">Selecciona…</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    </select>
+                  </label>
+                  <label>1.3 Colonia o zona de residencia
+                    <input type="text" name="colonia" placeholder="Colonia / Zona" required>
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>2) Perfil sociodemográfico (breve)</summary>
-        <div class="content">
-          <label>2.1 Sexo
-            <select name="sexo" required>
-              <option value="">Selecciona…</option>
-              <option>Femenino</option>
-              <option>Masculino</option>
-              <option>Otro / Prefiero no decir</option>
-            </select>
-          </label>
-          <label>2.2 Tamaño del hogar
-            <input type="number" name="tam_hogar" min="1" max="12" placeholder="Personas" required>
-          </label>
-          <label>2.3 Ocupación principal
-            <input type="text" name="ocupacion" placeholder="Ej. empleado(a), comerciante, estudiante…">
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>2) Perfil sociodemográfico (breve)</summary>
+                <div class="content">
+                  <label>2.1 Sexo
+                    <select name="sexo" required>
+                      <option value="">Selecciona…</option>
+                      <option>Femenino</option>
+                      <option>Masculino</option>
+                      <option>Otro / Prefiero no decir</option>
+                    </select>
+                  </label>
+                  <label>2.2 Tamaño del hogar
+                    <input type="number" name="tam_hogar" min="1" max="12" placeholder="Personas" required>
+                  </label>
+                  <label>2.3 Ocupación principal
+                    <input type="text" name="ocupacion" placeholder="Ej. empleado(a), comerciante, estudiante…">
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>3) Uso de servicios de salud</summary>
-        <div class="content">
-          <label>3.1 En el último año, ¿a dónde acudes más para consultas?
-            <select name="preferencia_consulta" required>
-              <option value="">Selecciona…</option>
-              <option>IMSS / ISSSTE / INSABI</option>
-              <option>Consultorio privado</option>
-              <option>Consultorio en farmacia</option>
-              <option>Otro</option>
-            </select>
-          </label>
-          <label>3.2 ¿Cuántas consultas tuvo tu hogar en los últimos 12 meses?
-            <input type="number" name="consultas" min="0" max="50" placeholder="Número aproximado" required>
-          </label>
-          <label>3.3 Tiempo de espera aceptable (minutos)
-            <input type="number" name="espera" min="0" max="240" placeholder="Ej. 30" required>
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>3) Uso de servicios de salud</summary>
+                <div class="content">
+                  <label>3.1 En el último año, ¿a dónde acudes más para consultas?
+                    <select name="preferencia_consulta" required>
+                      <option value="">Selecciona…</option>
+                      <option>IMSS / ISSSTE / INSABI</option>
+                      <option>Consultorio privado</option>
+                      <option>Consultorio en farmacia</option>
+                      <option>Otro</option>
+                    </select>
+                  </label>
+                  <label>3.2 ¿Cuántas consultas tuvo tu hogar en los últimos 12 meses?
+                    <input type="number" name="consultas" min="0" max="50" placeholder="Número aproximado" required>
+                  </label>
+                  <label>3.3 Tiempo de espera aceptable (minutos)
+                    <input type="number" name="espera" min="0" max="240" placeholder="Ej. 30" required>
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>4) Drivers de elección</summary>
-        <div class="content">
-          <p>¿Qué tan importantes son los siguientes factores al escoger un consultorio? (1= Nada importante, 5= Muy importante)</p>
-          <ul>
-            <li>
-              Cercanía:
-              <input type="range" name="drv_cercania" min="1" max="5" step="1" value="5">
-              <span class="range-badge" data-for="drv_cercania">5</span>
-            </li>
-            <li>
-              Precio:
-              <input type="range" name="drv_precio" min="1" max="5" step="1" value="4">
-              <span class="range-badge" data-for="drv_precio">4</span>
-            </li>
-            <li>
-              Tiempo de espera:
-              <input type="range" name="drv_espera" min="1" max="5" step="1" value="4">
-              <span class="range-badge" data-for="drv_espera">4</span>
-            </li>
-            <li>
-              Disponibilidad de medicamentos básicos:
-              <input type="range" name="drv_otc" min="1" max="5" step="1" value="3">
-              <span class="range-badge" data-for="drv_otc">3</span>
-            </li>
-          </ul>
-        </div>
-      </details>
+              <details>
+                <summary>4) Drivers de elección</summary>
+                <div class="content">
+                  <p>¿Qué tan importantes son los siguientes factores al escoger un consultorio? (1= Nada importante, 5= Muy importante)</p>
+                  <ul>
+                    <li>
+                      Cercanía:
+                      <input type="range" name="drv_cercania" min="1" max="5" step="1" value="5">
+                      <span class="range-badge" data-for="drv_cercania">5</span>
+                    </li>
+                    <li>
+                      Precio:
+                      <input type="range" name="drv_precio" min="1" max="5" step="1" value="4">
+                      <span class="range-badge" data-for="drv_precio">4</span>
+                    </li>
+                    <li>
+                      Tiempo de espera:
+                      <input type="range" name="drv_espera" min="1" max="5" step="1" value="4">
+                      <span class="range-badge" data-for="drv_espera">4</span>
+                    </li>
+                    <li>
+                      Disponibilidad de medicamentos básicos:
+                      <input type="range" name="drv_otc" min="1" max="5" step="1" value="3">
+                      <span class="range-badge" data-for="drv_otc">3</span>
+                    </li>
+                  </ul>
+                </div>
+              </details>
 
-      <details>
-        <summary>5) Módulo PSM (Van Westendorp)</summary>
-        <div class="content">
-          <p>Para una consulta general en un consultorio de farmacia en tu zona, ¿a partir de qué precios pensarías lo siguiente?</p>
-          <label>5.1 Demasiado barato (calidad dudosa)
-            <input type="number" name="psm_demasiado_barato" min="0" max="300" placeholder="$" required>
-          </label>
-          <label>5.2 Barato (buena oferta)
-            <input type="number" name="psm_barato" min="0" max="300" placeholder="$" required>
-          </label>
-          <label>5.3 Caro (empieza a doler)
-            <input type="number" name="psm_caro" min="0" max="300" placeholder="$" required>
-          </label>
-          <label>5.4 Demasiado caro (no lo pagaría)
-            <input type="number" name="psm_demasiado_caro" min="0" max="300" placeholder="$" required>
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>5) Módulo PSM (Van Westendorp)</summary>
+                <div class="content">
+                  <p>Para una consulta general en un consultorio de farmacia en tu zona, ¿a partir de qué precios pensarías lo siguiente?</p>
+                  <label>5.1 Demasiado barato (calidad dudosa)
+                    <input type="number" name="psm_demasiado_barato" min="0" max="300" placeholder="$" required>
+                  </label>
+                  <label>5.2 Barato (buena oferta)
+                    <input type="number" name="psm_barato" min="0" max="300" placeholder="$" required>
+                  </label>
+                  <label>5.3 Caro (empieza a doler)
+                    <input type="number" name="psm_caro" min="0" max="300" placeholder="$" required>
+                  </label>
+                  <label>5.4 Demasiado caro (no lo pagaría)
+                    <input type="number" name="psm_demasiado_caro" min="0" max="300" placeholder="$" required>
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>6) Compra de OTC (medicamentos de primera necesidad)</summary>
-        <div class="content">
-          <label>6.1 Después de la consulta, ¿sueles comprar algún medicamento básico en farmacia?
-            <select name="otc_frecuencia" required>
-              <option value="">Selecciona…</option>
-              <option>Sí, casi siempre</option>
-              <option>A veces</option>
-              <option>Rara vez</option>
-              <option>Nunca</option>
-            </select>
-          </label>
-          <label>6.2 Gasto aproximado en OTC por visita
-            <input type="number" name="otc_gasto" min="0" max="500" placeholder="$ (MXN)">
-          </label>
-          <label>6.3 Principales categorías que compras
-            <input type="text" name="otc_categorias" placeholder="Ej. analgésicos, antigripales, suero…">
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>6) Compra de OTC (medicamentos de primera necesidad)</summary>
+                <div class="content">
+                  <label>6.1 Después de la consulta, ¿sueles comprar algún medicamento básico en farmacia?
+                    <select name="otc_frecuencia" required>
+                      <option value="">Selecciona…</option>
+                      <option>Sí, casi siempre</option>
+                      <option>A veces</option>
+                      <option>Rara vez</option>
+                      <option>Nunca</option>
+                    </select>
+                  </label>
+                  <label>6.2 Gasto aproximado en OTC por visita
+                    <input type="number" name="otc_gasto" min="0" max="500" placeholder="$ (MXN)">
+                  </label>
+                  <label>6.3 Principales categorías que compras
+                    <input type="text" name="otc_categorias" placeholder="Ej. analgésicos, antigripales, suero…">
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>7) Ubicación y competencia</summary>
-        <div class="content">
-          <label>7.1 ¿Qué colonias te quedan más cómodas para acudir?
-            <input type="text" name="ubicacion" placeholder="Colonias / zonas preferidas">
-          </label>
-          <label>7.2 ¿Conoces consultorios de farmacia cercanos? ¿Cuáles?
-            <input type="text" name="competencia" placeholder="Nombres o ubicaciones">
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>7) Ubicación y competencia</summary>
+                <div class="content">
+                  <label>7.1 ¿Qué colonias te quedan más cómodas para acudir?
+                    <input type="text" name="ubicacion" placeholder="Colonias / zonas preferidas">
+                  </label>
+                  <label>7.2 ¿Conoces consultorios de farmacia cercanos? ¿Cuáles?
+                    <input type="text" name="competencia" placeholder="Nombres o ubicaciones">
+                  </label>
+                </div>
+              </details>
 
-      <details>
-        <summary>8) Satisfacción y recomendación</summary>
-        <div class="content">
-          <label>8.1 En general, ¿qué calificación darías al servicio habitual? (0–10)
-            <input type="number" name="satisfaccion" min="0" max="10" placeholder="0 a 10">
-          </label>
-          <label>8.2 Comentarios adicionales
-            <textarea name="comentarios" rows="4" placeholder="Escribe tus comentarios…"></textarea>
-          </label>
-        </div>
-      </details>
+              <details>
+                <summary>8) Satisfacción y recomendación</summary>
+                <div class="content">
+                  <label>8.1 En general, ¿qué calificación darías al servicio habitual? (0–10)
+                    <input type="number" name="satisfaccion" min="0" max="10" placeholder="0 a 10">
+                  </label>
+                  <label>8.2 Comentarios adicionales
+                    <textarea name="comentarios" rows="4" placeholder="Escribe tus comentarios…"></textarea>
+                  </label>
+                </div>
+              </details>
 
-      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:12px; flex-wrap:wrap;">
-        <button id="saveSurveyBtn" class="cta-button" type="button">Guardar respuesta</button>
-        <button class="cta-button" type="reset">Limpiar</button>
-        <button class="cta-button" type="button" onclick="window.print()">Imprimir / PDF</button>
-      </div>
-    </form>
-  </section>
+              <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:12px; flex-wrap:wrap;">
+                <button id="saveSurveyBtn" class="cta-button" type="button">Guardar respuesta</button>
+                <button class="cta-button" type="reset">Limpiar</button>
+                <button class="cta-button" type="button" onclick="window.print()">Imprimir / PDF</button>
+              </div>
+            </form>
+          </section>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <footer id="contacto">
     <div class="footer-contact">

@@ -237,6 +237,86 @@
     });
   }
 
+  // --- Aggregation by colonia for KPI table ---
+  const TOP_COLONIAS = [
+    { key: 'gaviotas', name: 'Gaviotas (N/S)', score: 92 },
+    { key: 'tamulte', name: 'Tamulté de las Barrancas', score: 86 },
+    { key: 'atasta', name: 'Atasta de Serra', score: 82 },
+    { key: 'lamanga', name: 'La Manga I–III', score: 79 },
+    { key: 'indeco', name: 'Indeco', score: 76 },
+  ];
+  const DEFAULT_KPI = {
+    gaviotas: { psm: 78, attach: 58, ticket: 118 },
+    tamulte: { psm: 76, attach: 55, ticket: 115 },
+    atasta: { psm: 79, attach: 53, ticket: 116 },
+    lamanga: { psm: 77, attach: 52, ticket: 113 },
+    indeco: { psm: 81, attach: 49, ticket: 112 },
+  };
+
+  function matchColoniaKey(str) {
+    if (!str) return null;
+    const s = String(str).toLowerCase();
+    if (s.includes('gaviotas')) return 'gaviotas';
+    if (s.includes('tamulte')) return 'tamulte';
+    if (s.includes('atasta')) return 'atasta';
+    if (s.includes('manga')) return 'lamanga';
+    if (s.includes('indeco')) return 'indeco';
+    return null;
+  }
+
+  function aggregateByColonia() {
+    const data = loadSurveys();
+    const buckets = {};
+    data.forEach(r => {
+      const key = matchColoniaKey(r.colonia || r.ubicacion || '');
+      if (!key) return;
+      if (!buckets[key]) buckets[key] = { n: 0, psmSum: 0, psmCnt: 0, attSum: 0, attCnt: 0 };
+      buckets[key].n++;
+      const barato = Number(r.psm_barato);
+      const caro = Number(r.psm_caro);
+      if (isFinite(barato) && isFinite(caro) && barato > 0 && caro > 0) {
+        buckets[key].psmSum += (barato + caro) / 2;
+        buckets[key].psmCnt++;
+      }
+      const a = mapAttach(r.otc_frecuencia);
+      if (a !== null) { buckets[key].attSum += a; buckets[key].attCnt++; }
+    });
+    const res = {};
+    Object.keys(buckets).forEach(k => {
+      const b = buckets[k];
+      res[k] = {
+        n: b.n,
+        psm: b.psmCnt ? Math.round(b.psmSum / b.psmCnt) : null,
+        attach: b.attCnt ? Math.round(b.attSum / b.attCnt) : null,
+      };
+    });
+    return res;
+  }
+
+  function renderKPIByColonia() {
+    const tbody = document.getElementById('kpiByColoniaBody');
+    if (!tbody) return;
+    const all = loadSurveys();
+    if (!all.length) return; // keep static fallback rows
+    const byCol = aggregateByColonia();
+    const avgOTC = 45;
+    const rows = TOP_COLONIAS.map(item => {
+      const d = byCol[item.key] || {};
+      const psm = d.psm != null ? d.psm : DEFAULT_KPI[item.key].psm;
+      const att = d.attach != null ? d.attach : DEFAULT_KPI[item.key].attach;
+      const ticket = Math.round(psm + (Math.max(0, Math.min(100, att)) / 100) * avgOTC);
+      return `
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.score}</td>
+          <td>$${psm}</td>
+          <td>${att}%</td>
+          <td>$${ticket}</td>
+        </tr>`;
+    }).join('');
+    tbody.innerHTML = rows;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initBars();
     initTooltips();
@@ -246,10 +326,22 @@
     attachSurveySave();
     renderProposalSummary();
     renderReportSummaryAndApply();
+    renderKPIByColonia();
     initDriverBadges();
     // Toggle-all bindings per page
     initToggleAll('reportToggleAll', '.accordion');
     initToggleAll('questionToggleAll', '.accordion');
     initToggleAll('indexToggleAll', '#propuesta .accordion');
+    // Report date (print cover)
+    const dateSpan = document.getElementById('reportDate');
+    if (dateSpan) {
+      try {
+        const now = new Date();
+        const fmt = new Intl.DateTimeFormat('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+        dateSpan.textContent = fmt.format(now);
+      } catch {
+        dateSpan.textContent = new Date().toLocaleDateString();
+      }
+    }
   });
 })();
