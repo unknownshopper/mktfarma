@@ -1,0 +1,470 @@
+/* Modern Elegant Theme */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #6366f1;
+  --primary-600: #4f46e5;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 6px 24px rgba(0,0,0,0.08);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 90px; }
+footer[id] { scroll-margin-top: 90px; }
+
+/* Layout helpers */
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* Header / Nav */
+header {
+  position: relative;
+  background: transparent;
+  border-bottom: 0;
+  margin-bottom: 12px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 2px;
+  background: var(--primary);
+  transition: width .25s ease;
+}
+
+nav a:hover { color: var(--primary); }
+nav a:hover::after { width: 100%; }
+
+.titleh {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    text-align: center;
+    padding: 96px 0 72px;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0.00) 60%);
+    color: var(--text);
+    width: min(1120px, 92%);
+    margin: 0 auto;
+    display: block;
+}
+
+.titleh h1 {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    text-align: center;
+    padding: 96px 0 72px;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0.00) 60%);
+    color: var(--text);
+}
+
+/* Buttons */
+.cta-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-1px);
+  background: var(--primary-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* Sections */
+section { padding: 56px 0; }
+section h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 12px;
+}
+section p { color: var(--muted); }
+
+/* Footer */
+footer {
+  background: #0f172a;
+  color: #e5e7eb;
+  text-align: center;
+  padding: 28px 0;
+  margin-top: 24px;
+}
+
+footer p { font-size: 0.98rem; }
+
+/* Footer contact block */
+.footer-contact {
+  width: min(1120px, 92%);
+  margin: 0 auto 12px;
+  padding-bottom: 8px;
+}
+.footer-contact h2 { font-size: clamp(1.25rem, 2vw, 1.5rem); margin-bottom: 6px; }
+.footer-contact p { color: #cbd5e1; margin-bottom: 10px; }
+.footer-contact .cta-button { margin-bottom: 8px; }
+
+/* Utilities: apply container to major blocks present in HTML */
+header > nav,
+.proposal { width: min(1120px, 92%); margin: 0 auto; }
+
+/* Fine tune spacing after hero */
+.proposal { padding-top: 16px; }
+
+/* Proposal / Accordion */
+.proposal .subtitle {
+  color: var(--muted);
+  margin-top: -6px;
+  margin-bottom: 16px;
+}
+
+.accordion details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.accordion details + details { margin-top: 12px; }
+
+.accordion summary {
+  list-style: none;
+  padding: 16px 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accordion summary::-webkit-details-marker { display: none; }
+
+.accordion summary::after {
+  content: "\25BC"; /* chevron */
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: transform .2s ease;
+}
+
+.accordion details[open] summary::after { transform: rotate(180deg); }
+
+.accordion .content {
+  padding: 0 18px 16px;
+  color: var(--muted);
+}
+
+.accordion ul { 
+  padding-left: 18px; 
+  margin-top: 8px; 
+  display: grid; 
+  gap: 6px; 
+}
+
+/* Nested list styling for budget breakdowns */
+.accordion .content ul ul {
+  padding-left: 16px;
+  margin-top: 6px;
+  gap: 4px;
+  color: var(--muted);
+}
+.accordion .content ul ul li { font-size: 0.98rem; }
+
+/* --- Charts & Visuals --- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+  margin: 10px 0 6px;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.metric .label { color: var(--muted); font-size: 0.9rem; }
+.metric .value { font-size: 1.45rem; font-weight: 700; }
+.metric .sub { color: var(--muted); font-size: 0.9rem; }
+
+.bars { display: grid; gap: 10px; margin: 8px 0; }
+.bar { position: relative; height: 32px; border-radius: 8px; background: rgba(99,102,241,0.08); overflow: hidden; border: 1px solid var(--border); }
+.bar .fill { position: absolute; inset: 0; width: 0; background: linear-gradient(90deg, rgba(99,102,241,0.65), rgba(99,102,241,0.35)); transition: width .8s ease; }
+.bar .txt { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 10px; font-size: 0.95rem; }
+
+.stacked { height: 32px; border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); }
+.stacked .a { background: rgba(99,102,241,0.65); }
+.stacked .b { background: rgba(20,184,166,0.55); }
+.stacked-legend { display: flex; gap: 14px; font-size: 0.92rem; color: var(--muted); margin-top: 6px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+
+.chart-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow-sm); }
+.chart-title { font-weight: 600; margin-bottom: 6px; }
+.chart-note { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+
+svg.chart { width: 100%; height: 180px; }
+svg.chart .axis { stroke: #94a3b8; stroke-width: 1; opacity: .6; }
+svg.chart .line { fill: none; stroke: #6366f1; stroke-width: 2.5; }
+svg.chart .point { fill: #6366f1; }
+
+.has-tip { position: relative; }
+.tooltip { position: fixed; z-index: 50; background: #0f172a; color: #e2e8f0; padding: 6px 8px; border-radius: 6px; font-size: 12px; box-shadow: var(--shadow-md); pointer-events: none; opacity: 0; transform: translateY(-4px); transition: opacity .15s ease, transform .15s ease; }
+.tooltip.show { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  nav ul { gap: 14px; }
+  .metrics { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  nav { height: auto; padding: 12px 0; }
+  nav ul { flex-wrap: wrap; justify-content: flex-end; }
+  .titleh { padding: 72px 0 48px; }
+}
+
+/* Print Styles */
+@media print {
+  nav, .cta-button, .footer-contact { display: none !important; }
+  body { background: #fff; color: #000; }
+  header { margin: 0 0 8px 0; }
+  .titleh { padding: 24px 0 12px; background: none; }
+  .proposal { width: 100%; }
+  details { page-break-inside: avoid; border: 1px solid #999; border-radius: 6px; margin-bottom: 8px; }
+  summary { font-weight: 700; }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .bar .fill { transition: none; }
+}
+
+/* ---------- Questionnaire polish ---------- */
+/* Card-like look for each details */
+.proposal .accordion details {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin: 10px 0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.proposal .accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Chevron */
+.proposal .accordion summary::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #6b7280;
+  border-bottom: 2px solid #6b7280;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  margin-left: auto;
+}
+.proposal .accordion details[open] > summary::after {
+  transform: rotate(45deg);
+  border-color: #4f46e5;
+}
+
+.proposal .accordion summary:hover {
+  background: #f9fafb;
+}
+
+.proposal .accordion .content {
+  padding: 12px 14px 16px 14px;
+  border-top: 1px solid #f3f4f6;
+  background: #fcfcfd;
+  /* Responsive grid for fields */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px 16px;
+}
+
+/* Labels and inputs */
+.proposal .accordion .content label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.proposal .accordion .content input[type="text"],
+.proposal .accordion .content input[type="number"],
+.proposal .accordion .content select,
+.proposal .accordion .content textarea {
+  appearance: none;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.proposal .accordion .content input[type="text"]:focus,
+.proposal .accordion .content input[type="number"]:focus,
+.proposal .accordion .content select:focus,
+.proposal .accordion .content textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* Range slider styling */
+.proposal .accordion .content input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+.proposal .accordion .content input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #4f46e5;
+  border: 2px solid white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.proposal .accordion .content input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #4f46e5;
+  border: 2px solid white;
+}
+
+/* Range value badge */
+.proposal .accordion .content .range-badge {
+  display: inline-block;
+  min-width: 28px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Checkbox row spacing */
+.proposal .accordion .content input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4f46e5;
+}
+
+/* Buttons layout in questionnaire */
+#surveyForm + div,
+#surveyForm .button-row,
+.proposal form > div[style*="justify-content:flex-end"] {
+  gap: 10px;
+}
+
+/* Subtle subtitle color in questionnaire */
+.proposal > .subtitle {
+  color: #4b5563;
+}
+
+/* Fine-tune CTA buttons to be slightly softer in forms */
+.proposal .cta-button {
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+/* Print view: ensure details contents are clearly separated */
+@media print {
+  .proposal .accordion details {
+    break-inside: avoid;
+    border-color: #e5e7eb;
+    box-shadow: none;
+  }
+  .proposal .accordion summary {
+    background: #f3f4f6 !important;
+  }
+}

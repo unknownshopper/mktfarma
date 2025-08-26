@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unknown Shopper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#propuesta">Propuesta</a></li>
+                <li><a href="cuestionario.html">Encuesta</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <h1 class="titleh">Estudio de mercado para 20 consultorios de bajo costo en colonias populares de Villahermosa, Tabasco</h1>
+        
+    </header>
+    <section id="propuesta" class="proposal">
+        <h2>Propuesta de Investigación de Mercado</h2>
+        <p class="subtitle">Enfoque en selección de ubicaciones, precio de consulta y venta de medicamentos de primera necesidad</p>
+        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:6px;">
+          <a class="cta-button" href="reporte.html">Ver reporte simulado</a>
+          <button id="indexToggleAll" class="cta-button" type="button">Expandir todo</button>
+        </div>
+        <div id="proposalSurveySummary" class="summary-card" style="margin:14px 0; padding:12px; border:1px solid #e5e7eb; border-radius:10px; background:#fafafa;">
+          <strong>Resumen de encuestas</strong>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:6px;">
+            <span>Muestras: <b id="sumN">0</b></span>
+            <span>PSM sugerido: <b id="sumPSM">—</b></span>
+            <span>Attach estimado: <b id="sumAttach">—</b></span>
+            <span>OTC promedio: <b id="sumOTC">—</b></span>
+          </div>
+        </div>
+        <div class="accordion">
+            <details open>
+                <summary>1) Objetivo general</summary>
+                <div class="content">
+                    <p>Determinar la viabilidad para abrir 20 sucursales en colonias populares de Villahermosa, estimando tamaño de mercado, disposición a pagar por consulta y potencial de venta de medicamentos de primera necesidad en punto.</p>
+                </div>
+            </details>
+            <details>
+                <summary>2) Objetivos específicos</summary>
+                <div class="content">
+                    <ul>
+                        <li>Segmentar la demanda por demografía y por colonia/zona de Villahermosa.</li>
+                        <li>Cuantificar uso actual de servicios (público/privado/telemedicina) y motivos de elección.</li>
+                        <li>Estimar disposición a pagar por consulta (PSM Van Westendorp) y por medicamentos de primera necesidad.</li>
+                        <li>Priorizar 20 ubicaciones mediante un score multicriterio (densidad, afluencia, competencia, accesibilidad).</li>
+                        <li>Identificar drivers de elección: precio, cercanía, tiempo de espera, confianza, disponibilidad de medicamentos básicos.</li>
+                        <li>Evaluar canibalización/solapamientos entre ubicaciones y brechas de servicio en colonias populares.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>3) Metodología</summary>
+                <div class="content">
+                    <ul>
+                        <li><strong>Cualitativa</strong>: 6–8 entrevistas y 2–3 mini-grupos focales con residentes de colonias populares y decisores de gasto en salud.</li>
+                        <li><strong>Cuantitativa</strong>: Encuesta n≈400 (estratificación por colonias/zonas de Villahermosa; cuotas por sexo/edad).</li>
+                        <li><strong>Desk & campo</strong>: mapeo de competencia y afluencia (geomarketing ligero), observación de puntos y verificación de disponibilidad de medicamentos básicos.</li>
+                        <li>Recolección mixta: calle/puntos de afluencia + online geolocalizado.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>4) Muestra y población objetivo</summary>
+                <div class="content">
+                    <ul>
+                        <li>Población: 18–65 años, NSE C–D, residentes de Villahermosa (urbano/periurbano) en colonias populares.</li>
+                        <li>Muestra cuantitativa: n≈400; cuotas por colonia/zona prioritaria y cercanía a potenciales locales.</li>
+                        <li>Muestra cualitativa: saturación teórica con perfiles de usuarios frecuentes/ocasionales y compradores de medicamentos básicos.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>5) Instrumentos</summary>
+                <div class="content">
+                    <ul>
+                        <li>Guía de entrevista: historia de uso, dolores, evaluación de conceptos de consulta y surtido básico.</li>
+                        <li>Cuestionario: perfil, uso actual, atributos valorados, PSM (consulta y OTC), intención y NPS.</li>
+                        <li>Checklist de observación: afluencia, competidores, precios de referencia, disponibilidad de medicamentos básicos.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>6) Plan de análisis</summary>
+                <div class="content">
+                    <ul>
+                        <li>Cuali: análisis temático, mapas de empatía y journey por colonia.</li>
+                        <li>Cuanti: descriptivos, cruces, PSM (consulta y OTC), pruebas bivariadas, modelo simple de intención.</li>
+                        <li>Ubicación: scoring multicriterio y heatmap para priorizar 20 sucursales (afluencia, competencia, densidad).</li>
+                        <li>Comercial: estimación de ticket medio (consulta + básicos) y sensibilidad a precio.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>7) Cronograma (4 semanas)</summary>
+                <div class="content">
+                    <ul>
+                        <li>Semana 1: Diseño, mapeo preliminar de zonas y piloto de instrumentos.</li>
+                        <li>Semana 2: Campo cualitativo y validación de supuestos de ubicación y surtido.</li>
+                        <li>Semana 3: Campo cuantitativo (n≈400) en colonias priorizadas.</li>
+                        <li>Semana 4: Análisis, ranking de 20 ubicaciones y recomendaciones de precio/surtido.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>8) Presupuesto estimado</summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <strong>Cuali: $60,000-$70,000 MXN</strong>
+                            <ul>
+                                <li>Alcance: 8–10 entrevistas a profundidad (IDI) + 2 grupos focales (6–8 pax c/u).</li>
+                                <li>Reclutamiento e incentivos: perfilado y convocatorias; $500–$700 por participante.</li>
+                                <li>Moderación y guía: diseño de guía, conducción y notas de campo.</li>
+                                <li>Infraestructura: sala/plataforma, grabación, transcripción selectiva.</li>
+                                <li>Logística: traslados, tiempos muertos y coordinación.</li>
+                                <li>Subtotal estimado: honorarios + incentivos + logística dentro del rango.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Cuanti (n≈400): $110,000-$130,000 MXN</strong>
+                            <ul>
+                                <li>Alcance: ~400 cuestionarios válidos en 3-4 zonas/municipios (muestreo por cuotas).</li>
+                                <li>Campo: 8-12 encuestadores + 1 supervisor; pago por encuesta y control de calidad (back-check ≥15%).</li>
+                                <li>Instrumento y hosting: programación, pruebas piloto y plataforma de captura.</li>
+                                <li>Incentivos/agradecimientos: vales simbólicos para elevar tasa de respuesta.</li>
+                                <li>Logística: traslados locales, consumibles y seguridad operativa.</li>
+                                <li>Subtotal estimado: encuestas + QA + plataforma + logística dentro del rango.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Análisis y reporte: $50,000-$60,000 MXN</strong>
+                            <ul>
+                                <li>Procesamiento: limpieza, codificación cuali, tabulados, PSM y cruces.</li>
+                                <li>Análisis: consultor senior (insights y segmentación), recomendaciones accionables.</li>
+                                <li>Entregables: reporte ejecutivo, anexos metodológicos y visualizaciones; sesión de socialización.</li>
+                                <li>Herramientas: licencias/soft y maquetación.</li>
+                                <li>Subtotal estimado: horas consultivas + diseño + herramientas dentro del rango.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Total</strong>: $220,000-$260,000 MXN (ajustable).</li>
+                    </ul>
+                   
+                </div>
+            </details>
+            <details>
+                <summary>9) Resultados esperados</summary>
+                <div class="content">
+                    <ul>
+                        <li>Tamaño de mercado y segmentos prioritarios por colonia/zona.</li>
+                        <li>Ranking de 20 ubicaciones con mapa y justificación (afluencia, competencia, accesibilidad).</li>
+                        <li>Rango de precios óptimos y sensibilidad para consulta y medicamentos de primera necesidad.</li>
+                        <li>Propuesta de valor y go-to-market: horarios, staffing y lineamientos de venta de básicos en consultorio.</li>
+                        <li>Métricas base (intención, NPS, satisfacción) y estimación de ticket medio (consulta + básicos).</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
+                <summary>10) Ética y cumplimiento</summary>
+                <div class="content">
+                    <ul>
+                        <li>Consentimiento informado y confidencialidad.</li>
+                        <li>Cumplimiento LFPDPPP (México) y resguardo de datos.</li>
+                        <li>Observación de normativas COFEPRIS aplicables a venta de medicamentos de primera necesidad.</li>
+                        <li>Uso exclusivo con fines de investigación.</li>
+                    </ul>
+                </div>
+            </details>
+            <details open>
+                <summary>11) Anexo A: Colonias objetivo (tentativo)</summary>
+                <div class="content">
+                    <p>Listado preliminar de colonias y zonas populares en Villahermosa para priorizar levantamiento y evaluación de locales. Sujeto a validación en campo y disponibilidad de inmuebles.</p>
+                    <ul>
+                        <li>Gaviotas (Sección Norte y Sur)</li>
+                        <li>Tamulté de las Barrancas</li>
+                        <li>Atasta de Serra</li>
+                        <li>Indeco</li>
+                        <li>Casa Blanca (1a y 2a etapa)</li>
+                        <li>Espejo I y II</li>
+                        <li>Tierra Colorada</li>
+                        <li>La Manga I–III</li>
+                        <li>Laguna El Negro / zonas aledañas con alta afluencia</li>
+                        <li>Parrilla (corredor hacia periferia con flujo diario)</li>
+                    </ul>
+                    <p>Criterios de priorización: densidad poblacional, afluencia peatonal, competencia cercana, accesibilidad vial/transporte y disponibilidad de locales.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>12) Anexo B: Medicamentos de primera necesidad (venta sin receta)</summary>
+                <div class="content">
+                    <p>Categorías sugeridas para surtido básico en consultorio, alineadas a venta sin receta (OTC) y buenas prácticas. La lista final se ajustará conforme lineamientos COFEPRIS y proveedor.</p>
+                    <ul>
+                        <li><strong>Analgésicos y antipiréticos</strong>: paracetamol, ibuprofeno, naproxeno (dosis OTC).</li>
+                        <li><strong>Antigripales y antihistamínicos</strong>: combinados con fenilefrina/paracetamol; loratadina, clorfenamina.</li>
+                        <li><strong>Antidiarreicos y rehidratación</strong>: loperamida; sales de rehidratación oral (SRO).</li>
+                        <li><strong>Antitusígenos y expectorantes</strong>: dextrometorfano, guaifenesina.</li>
+                        <li><strong>Antiácidos y digestivos</strong>: hidróxido de aluminio/magnesio, simeticona.</li>
+                        <li><strong>Analgésicos/antiinflamatorios tópicos</strong>: diclofenaco gel, árnica tópica.</li>
+                        <li><strong>Curación y antisépticos</strong>: gasas, vendas, curitas; clorhexidina, alcohol, agua oxigenada.</li>
+                        <li><strong>Vitaminas y sueros</strong>: complejo B, multivitamínicos; electrolitos orales.</li>
+                        <li><strong>Otros básicos</strong>: termómetros, cubrebocas, lubricantes oculares simples.</li>
+                    </ul>
+                    <p><em>Nota</em>: Se excluyen antibióticos y fármacos sujetos a receta. La venta deberá apegarse a normatividad COFEPRIS y políticas internas.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+    <footer id="contacto">
+        <div class="footer-contact">
+            <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+            <a href="#" class="cta-button">Contacto</a>
+        </div>
+        <p>&copy; 2025 The Unknown Shopper. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
