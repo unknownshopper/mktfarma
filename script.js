@@ -317,6 +317,43 @@
     tbody.innerHTML = rows;
   }
 
+  function renderROI() {
+    const box = document.getElementById('roiBox');
+    if (!box) return;
+    // Defaults from dataset
+    const defPrice = Math.max(0, Number(box.dataset.price) || 78);
+    const defAttach = Math.max(0, Math.min(100, Number(box.dataset.attach) || 55));
+    const consultasDia = Math.max(0, Number(box.dataset.consultas) || 20);
+    const diasMes = Math.max(0, Number(box.dataset.dias) || 22);
+
+    // Try to use aggregates if available
+    const ag = aggregateSurveys();
+    const price = ag && ag.psmAvg != null ? Math.round(ag.psmAvg) : defPrice;
+    const attach = ag && ag.attachAvg != null ? Math.round(ag.attachAvg) : defAttach;
+
+    // Ticket estimation based on attach impact on OTC
+    const avgOTC = 45; // MXN
+    const otc = (Math.max(0, Math.min(100, attach)) / 100) * avgOTC;
+    const ticketMid = price + otc;
+    const ticketLow = Math.round(price + otc * 0.8);
+    const ticketHigh = Math.round(price + otc * 1.2);
+
+    const monthlyLow = Math.round(ticketLow * consultasDia * diasMes);
+    const monthlyHigh = Math.round(ticketHigh * consultasDia * diasMes);
+
+    const asum = `PSM ~$${price}, attach ~${attach}%, consultas/día ${consultasDia}, días/mes ${diasMes}`;
+    const elAss = document.getElementById('roiAssumptions');
+    const elTL = document.getElementById('roiTicketLow');
+    const elTH = document.getElementById('roiTicketHigh');
+    const elML = document.getElementById('roiMonthlyLow');
+    const elMH = document.getElementById('roiMonthlyHigh');
+    if (elAss) elAss.textContent = asum;
+    if (elTL) elTL.textContent = String(ticketLow);
+    if (elTH) elTH.textContent = String(ticketHigh);
+    if (elML) elML.textContent = String(monthlyLow);
+    if (elMH) elMH.textContent = String(monthlyHigh);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initBars();
     initTooltips();
@@ -328,10 +365,13 @@
     renderReportSummaryAndApply();
     renderKPIByColonia();
     initDriverBadges();
+    // ROI dinámico (cliente.html)
+    renderROI();
     // Toggle-all bindings per page
     initToggleAll('reportToggleAll', '.accordion');
     initToggleAll('questionToggleAll', '.accordion');
     initToggleAll('indexToggleAll', '#propuesta .accordion');
+    initToggleAll('clientToggleAll', '.accordion');
     // Report date (print cover)
     const dateSpan = document.getElementById('reportDate');
     if (dateSpan) {

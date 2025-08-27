@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta para Cliente – Consultorios en Farmacia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <table class="print-table">
+    <thead class="print-header">
+      <tr>
+        <td>
+          <div class="print-header-inner">
+            <img src="logo.png" alt="The Unknown Shopper" class="print-logo" />
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody class="print-body">
+      <tr>
+        <td>
+          <header>
+            <nav>
+              <div class="logo">
+                <img src="logo.png" alt="Logo">
+              </div>
+              <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="reporte.html">Reporte</a></li>
+                <li><a href="cuestionario.html">Encuesta</a></li>
+              </ul>
+            </nav>
+            <h1 class="titleh">Propuesta de sistema para consultorios de bajo costo en colonias populares de Villahermosa</h1>
+          </header>
+
+          <section class="proposal">
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
+              <button id="clientToggleAll" class="cta-button" type="button">Expandir todo</button>
+              <a class="cta-button" href="reporte.html">Ver reporte simulado</a>
+              <button id="printBtn" class="cta-button" type="button">Descargar PDF</button>
+            </div>
+
+            <!-- <div id="proposalSurveySummary" class="summary-card" style="margin:14px 0; padding:12px; border:1px solid #e5e7eb; border-radius:10px; background:#fafafa;">
+              <strong>Resumen de encuestas</strong>
+              <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:6px;">
+                <span>Muestras: <b id="sumN">0</b></span>
+                <span>PSM sugerido: <b id="sumPSM">—</b></span>
+                <span>Attach estimado: <b id="sumAttach">—</b></span>
+                <span>OTC promedio: <b id="sumOTC">—</b></span>
+              </div>
+            </div> -->
+
+            <h2>Propuesta para implementación del sistema</h2>
+            <p class="subtitle">Alcance funcional, metodología, cronograma, presupuesto y entregables</p>
+
+            <div class="accordion">
+              <details open>
+                <summary>1) Contexto y objetivo</summary>
+                <div class="content">
+                  <p>Desplegar un sistema de decisión para abrir consultorios en farmacia de bajo costo en colonias populares de Villahermosa, integrando datos de encuestas, análisis de precio óptimo (PSM), y un ranking de ubicaciones para maximizar afluencia y ticket total (consulta + medicamentos de primera necesidad).</p>
+                </div>
+              </details>
+
+              <details>
+                <summary>2) Alcance del sistema propuesto</summary>
+                <div class="content">
+                  <ul>
+                    <li>Repositorio local de encuestas con captura sencilla y exportación.</li>
+                    <li>Estimación automática de PSM (precio óptimo de consulta) y métricas de adjunción de OTC.</li>
+                    <li>Dashboard ejecutivo: métricas clave y visualizaciones ligeras listas para imprimir/PDF.</li>
+                    <li>Ranking de ubicaciones por score multicriterio (densidad, afluencia, competencia, accesibilidad).</li>
+                    <li>Plantillas de reporte y cuestionario imprimibles con encabezado repetible.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>3) Módulos y funcionalidades</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Captura</strong>: formulario con filtros, módulo PSM y hábitos de compra OTC.</li>
+                    <li><strong>Agregación</strong>: cálculo de promedios y mapeo por colonias objetivo.</li>
+                    <li><strong>Visualización</strong>: tarjetas KPI, barras comparativas, mezcla de ticket.</li>
+                    <li><strong>Reporte</strong>: plantilla ejecutiva con botones de "Expandir todo" e impresión.</li>
+                    <li><strong>Operación</strong>: lineamientos para seguimiento de KPIs por sucursal.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>4) Metodología y cronograma</summary>
+                <div class="content">
+                  <ul>
+                    <li>Semana 1: Diseño, mapeo preliminar y piloto de instrumentos.</li>
+                    <li>Semana 2: Campo cualitativo y ajuste de supuestos de ubicación/surtido.</li>
+                    <li>Semana 3: Campo cuantitativo (n≈400) en colonias priorizadas.</li>
+                    <li>Semana 4: Análisis, ranking y recomendaciones de precio/surtido.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>4.1) ¿Por qué nosotros?</summary>
+                <div class="content">
+                  <ul>
+                    <li>Experiencia en retail-salud y enfoque 100% accionable.</li>
+                    <li>Dominio local de Villahermosa y colonias objetivo.</li>
+                    <li>Entrega ejecutiva lista para comité directivo/board.</li>
+                    <li>Plantillas propias de captura/análisis y despliegue rápido.</li>
+                    <li>Propiedad total de datos y materiales para el cliente.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details open>
+                <summary>4.2) ROI estimado</summary>
+                <div class="content">
+                  <div id="roiBox" data-price="78" data-attach="55" data-consultas="20" data-dias="22">
+                    <p>Supuestos base: <span id="roiAssumptions">—</span></p>
+                    <p>Ticket estimado: $<span id="roiTicketLow">—</span> – $<span id="roiTicketHigh">—</span></p>
+                    <p>Ingreso mensual (rango): $<span id="roiMonthlyLow">—</span> – $<span id="roiMonthlyHigh">—</span></p>
+                    <small>Nota: valores de referencia; afinamos con datos de campo.</small>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>4.3) Garantías y gobernanza</summary>
+                <div class="content">
+                  <ul>
+                    <li>Go/No-Go al final de Semana 1 con ajuste sin costo si hace falta.</li>
+                    <li>Correcciones incluidas: 1 ronda en Lite; 2 rondas en Estándar/Completo.</li>
+                    <li>Comité quincenal de 30 min para decisiones y desbloqueos.</li>
+                    <li>Propiedad de datos 100% del cliente (entrega de bases y scripts).</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>5) Presupuesto estimado</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Paquete Lite</strong> ($120,000–$140,000 MXN)
+                      <ul>
+                        <li>Cuantitativa n≈200–250 (colonias prioritarias)</li>
+                        <li>3–4 entrevistas en profundidad (IDI) remotas</li>
+                        <li>Reporte ejecutivo breve (10–12 láminas)</li>
+                      </ul>
+                    </li>
+                    <li class="plan-recommended"><strong>Paquete Estándar</strong> ($150,000–$180,000 MXN) <span class="badge badge-rec">Recomendado</span>
+                      <ul>
+                        <li>Cuantitativa n≈300</li>
+                        <li>6 entrevistas en profundidad (IDI)</li>
+                        <li>Reporte ejecutivo completo + recomendaciones</li>
+                        <li>1 iteración de revisión con el cliente</li>
+                      </ul>
+                    </li>
+                    <li><strong>Paquete Completo</strong> ($220,000–$260,000 MXN)
+                      <ul>
+                        <li>Cuantitativa n≈400</li>
+                        <li>9 IDI + 2 grupos focales</li>
+                        <li>Dashboard ligero + anexos metodológicos</li>
+                        <li>2 iteraciones de revisión</li>
+                      </ul>
+                    </li>
+                    <li><strong>Add-ons</strong>
+                      <ul>
+                        <li>Aumentar muestra a n≈400: +$40,000 MXN</li>
+                        <li>Dashboard interactivo adicional: +$20,000 MXN</li>
+                        <li>Sesión extra de workshop/iteración: +$10,000 MXN</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>6) Entregables</summary>
+                <div class="content">
+                  <ul>
+                    <li>Reporte ejecutivo en PDF y editable.</li>
+                    <li>Cuestionario y base de datos de encuestas (estructura y muestra capturada).</li>
+                    <li>Dashboard ligero con KPIs y ranking por colonia.</li>
+                    <li>Anexos metodológicos y lineamientos operativos.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>7) Equipo y responsabilidades</summary>
+                <div class="content">
+                  <ul>
+                    <li><strong>Consultor senior</strong>: dirección metodológica, insights y storytelling.</li>
+                    <li><strong>Coordinación de campo</strong>: reclutamiento, control de calidad.</li>
+                    <li><strong>Analista</strong>: procesamiento, PSM, cruces y visualizaciones.</li>
+                    <li><strong>Diseño</strong>: maquetación de entregables y material impreso.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary>8) Términos y siguientes pasos</summary>
+                <div class="content">
+                  <ul>
+                    <li>Inicio contra 50% de anticipo; 50% contra entrega.</li>
+                    <li>Propiedad de datos y confidencialidad conforme LFPDPPP.</li>
+                    <li>Kickoff: validación de colonias objetivo y métricas de éxito.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <div class="cta-block" style="margin-top:16px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; background:#fafafa;">
+            <p><strong>Siguiente paso:</strong> reunión de 30 minutos esta semana. Si elegimos el Paquete Estándar, proponemos kickoff el próximo lunes.</p>
+            <a href="#contacto" class="cta-button">Agendar</a>
+          </div>
+
+          <footer id="contacto">
+            <div class="footer-contact">
+              <p>¿Te interesa esta propuesta? Conversemos y ajustamos a tus necesidades.</p>
+              <a href="#" class="cta-button">Contacto</a>
+            </div>
+            <p>&copy; 2025 The Unknown Shopper. Todos los derechos reservados.</p>
+          </footer>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot class="print-footer">
+      <tr>
+        <td>
+          <div class="print-footer-inner"><span>https://unknownshoppers.com</span></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

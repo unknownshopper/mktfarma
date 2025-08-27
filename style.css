@@ -303,6 +303,8 @@ svg.chart .point { fill: #6366f1; }
 .print-only { display: none; }
 .screen-only { display: initial; }
 
+.print-table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+.print-table td { padding: 0; border: 0; }
 .print-table thead.print-header { display: none !important; }
 
 @media print {
@@ -315,6 +317,7 @@ svg.chart .point { fill: #6366f1; }
   table.print-table { width: 100%; border-collapse: collapse; }
   table.print-table thead { display: table-header-group; }
   table.print-table tbody { display: table-row-group; }
+  table.print-table tfoot { display: table-footer-group; }
   table.print-table td { padding: 0; border: 0; }
   .print-header { display: table-header-group !important; }
   .print-header .print-header-inner {
@@ -327,6 +330,18 @@ svg.chart .point { fill: #6366f1; }
   }
   .print-header .print-logo { height: 28px; width: auto; }
   .print-header .print-brand { font-weight: 700; font-size: 14px; color: #111827; }
+  /* Repeating footer styling */
+  .print-footer { display: table-footer-group !important; }
+  .print-footer .print-footer-inner {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 6px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 12px;
+    color: #374151;
+    background: #fff;
+  }
   /* Footer logo size on last page (signature block) */
   .print-footer-logo { text-align: center; }
   .print-footer-logo img { height: 22px; width: auto; max-width: 140px; }
@@ -341,6 +356,9 @@ svg.chart .point { fill: #6366f1; }
   .stacked .b { background: #14b8a6 !important; }
   .legend-dot { background: #6366f1 !important; }
   #legendOTC .legend-dot { background: #14b8a6 !important; }
+  /* Force header/footer to render in print (override screen rule with same specificity) */
+  .print-table thead.print-header { display: table-header-group !important; }
+  .print-table tfoot.print-footer { display: table-footer-group !important; }
 }
 
  /* Cover & signature (print) */
@@ -549,3 +567,13 @@ svg.chart .point { fill: #6366f1; }
      background: #f3f4f6 !important;
    }
  }
+
+/* Badges y resaltado de paquetes */
+.badge { display:inline-block; margin-left:6px; padding:2px 8px; font-size:12px; line-height:1; border-radius:999px; font-weight:600; background:#fde68a; color:#92400e; }
+.badge-rec { background:#fde68a; color:#92400e; }
+.plan-recommended { border:1px solid #f59e0b; border-radius:8px; padding:8px; background: rgba(245, 158, 11, 0.06); }
+
+@media print {
+  .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .plan-recommended { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
