@@ -568,6 +568,20 @@ svg.chart .point { fill: #6366f1; }
    }
  }
 
+/* Notas informativas */
+.note { margin: 8px 0 12px; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fffbeb; color: #374151; }
+.note em { font-style: normal; font-weight: 600; color: #92400e; }
+.note::before { content: none; }
+
+/* Layout 2 columnas para Presupuesto (nota + paquetes) */
+.budget-grid { display: grid; grid-template-columns: minmax(220px, 28%) 1fr; gap: 16px; align-items: start; }
+.budget-grid .note { margin: 0; }
+
+@media print {
+  .note { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .budget-grid { grid-template-columns: minmax(220px, 30%) 1fr; gap: 12px; }
+}
+
 /* Badges y resaltado de paquetes */
 .badge { display:inline-block; margin-left:6px; padding:2px 8px; font-size:12px; line-height:1; border-radius:999px; font-weight:600; background:#fde68a; color:#92400e; }
 .badge-rec { background:#fde68a; color:#92400e; }
